@@ -1,0 +1,39 @@
+Related to nodes:
+  
+    kubectl get nodes - Nodes that are connected
+       
+Related to deployments:
+
+    kubectl get deployments  - Display all the deployments
+    kubectl get deployments -n <namespace_name> - Display all the deployments in particular namespace
+    kubectl run <name_of_deployment> --image=<image_name> --replicas=<no_of_replica> --port=<port_number> - Create a deployment 
+    kubectl expose deployment <name_of_deployment> --type=NodePort --port <port_number> - Expose application to outside world
+    kubectl delete deployment <name_of_deployment> - Delete a particular deployment
+
+Related to pods:
+  
+    kubectl get pods - Display all pods
+    kubectl get pods -n <namespace_name> - Display all pods in particular namespace
+    kubectl describe pod <pod_name> - Display particular pod information
+    kubectl exec <pod_name> env - Display all environment variables on particular pod
+    kubectl exec -ti <pod_name> bash - Run bash terminal in container
+    kubectl label pod <pod_name> <label_name> - Assign label to a particular pod
+    kubectl get pods -l <label_name> - Get all the pods with particular label
+    kubectl delete pod <pod_name> - Delete a particular pod
+    
+Related to services:
+   
+    kubectl get services - Display all the services
+    kubectl get services -n <namespace_name> - Display all the services in particular namespace
+    kubectl describe services/<service_name> - Display particular service information
+    kubectl delete service <service_name> - Delete a particular service 
+            
+Related to namespace:
+              
+    kubectl create namespace <namespace_name> - Create a particular namespace
+                  
+Advance operations:
+                    
+    kubectl scale deployments/<name_of_deployment> --replicas=<No_of_replica> - Scale a deployment to particular no of replicas
+    kubectl set image deployments/<name_of_deployment> <name_of_deployment>=<image_name>:<tag_name> - Update the image of a particular deployment
+    kubectl rollout status deployments/<name_of_deployment> - Check whether update is done or not

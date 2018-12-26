@@ -1,0 +1,60 @@
+To avoid prefixing docker command with sudo, run the following commands:
+  
+    sudo groupadd docker
+    sudo usermod -aG docker <user_name>
+        
+    log-out and log-in back so that changes can be affected.
+            
+List Docker CLI commands:
+              
+    docker
+    docker container --help
+
+Display Docker version and info:
+                    
+    docker --version
+    docker version
+    docker info
+
+Related to Image:
+                              
+    docker image ls -a - List all Docker images in local machine's registry
+    docker build -t <image_name> . - Build the image from Dockerfile in current directory
+    docker run -p <machine_port>:<container_port_defined_in_Dockerfile> <image_name> - Run a particular application and access it at http://<machine_name>:<machine:port>
+    docker run -d -p <machine_port>:<container_port_defined_in_Dockerfile> <image_name> - Run a particular application in detached mode and access it at http://<machine_name>:<machine:port>
+    docker rmi <image_name> - Remove a particular image
+    docker image rm $(docker image ls -a -q) - Remove all images from this machine
+                                            
+Related to Container:
+                                              
+    docker container ls - List Docker containers (running)
+    docker container ls --all - List Docker containers (all)
+    docker container ls -aq - List Docker containers (all in quiet mode)
+    docker container stop <container_id> - End a particular process
+    docker rm <container_id> - Remove a particular container
+    docker container rm $(docker container ls -a -q) - Remove all containers
+    docker container kill <container_id> - Force shutdown of the specified container
+                                                              
+Related to Service:
+                                                                
+    docker service ls - List Docker services(running)
+    docker service ps <service_name> - List tasks associated with an app
+                                                        
+Related to swarm:
+                                                                        
+    docker swarm init - To make the current machine as swarm manager. Note the output of this command
+    docker swarm join .... - From previous output, copy docker swarm join command and run in worker node(another VM)
+    docker node ls - Run on manager node to display all the nodes that are connected in swarm
+    docker swarm leave --force - Take swarm down
+                                                                                  
+Related to Stack:
+                                                                                    
+    docker stack deploy -c docker-compose.yml <any_app_name> - Run this command where docker-compose.yml file is present on manager. This will deploy app acc to config given in file
+    docker stack rm <any_app_name> - Take a particular app down
+                                                                                         
+Pushing images to docker hub:
+
+    docker login - Login to docker hub account
+    docker tag <image_name> <docker_hub_username>/<new_image_name>:<tag> - Tag an image with new name and version. <tag> is optional
+    docker push <docker_hub_username>/<new_image_name>:<tag> - Upload image to docker hub
+

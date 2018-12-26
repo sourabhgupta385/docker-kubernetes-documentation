@@ -1,0 +1,80 @@
+What is a container?
+    
+    A container is a standard unit of software that packages all the software components like fronted, database, environment dependencies etc.
+
+What is Docker?
+
+    Docker is a tool that helps to deploy these containers on different machines so that same piece of code can be executed on different machines. 
+
+General Workflow of Docker:
+
+    1)  Docker file: Developer defines this file that contains information about the application and its dependencies. It is used to create a Docker image.
+    2)  Docker image: It has all the application and its dependencies. When we run a Docker image we get a container. These images can be stored in Docker hub or any version control repository.
+    3)  Docker container: These are the run time instances of Docker image that contain the application and its dependencies.
+          
+    Now these Docker images can be pulled in any environment like test environment or staging environment and we can be sure that the application will run in all the environment using the Docker container.
+
+Difference between Virtualization & Containerization
+
+    Virtualization  
+        
+        It has a software like hypervisor or VMware situated on top of Host OS. 
+        This software provides different OS to be hosted like windows, linux etc. 
+        There is more overhead to the host OS.  
+        In this case fixed memory is allocated to different VMs that are created. 
+                          
+    Containerization
+                                
+        It has Docker engine situated on top of host OS.
+        It has different containers where application can be stored.
+        There is less overhead to the host OS.
+        The memory is not fixed. It will be taken according to the need of application.
+
+Docker has a client-server architecture.
+
+    The CLI is client and Docker Daemon is server. These both together forms a client-server architecture.
+    The server(daemon) receives the commands from client through CLI or rest APIs.
+    Docker client and daemon can be present on same system or on different systems.
+
+Benefits of using Docker:
+
+    It resolves the problem of code working on one system and not working on another system.
+    The application is required to build only once. Thus, an application inside a container can run on any system which has Docker installed.
+    With Docker we run the application inside a container and then ship this container. So there is no need to worry that whether it will work in different environment or not because the containers are identical only.
+    It is portable: If a Docker container is built using Amazon EC2 web service, then it can be easily run on virtual box or google cloud platform.
+    It provides version control system also so that we can commit changes to the Docker file and version control them.
+    Isolation: The app run inside its own container and does not interfere with any other container. So multiple containers can be run on same system.
+    Docker makes it easy and faster to deploy apps to different systems.
+
+What are services?
+
+    Services are really just “containers in production.” 
+      A service only runs one image, but it codifies the way that image runs—what ports it should use, 
+      how many replicas of the container should run so the service has the capacity it needs, and so on.
+         
+      It’s very easy to define, run, and scale services with the Docker platform -- just write a docker-compose.yml file.
+
+What does docker-compose.yml file contains?
+
+    It contains information about the image that is to be pulled, no of replicas to make,
+    port information etc.
+
+What is docker swarm?
+
+    A swarm is a group of machines that are running Docker and joined into a cluster.
+    The machines in a swarm can be physical or virtual. After joining a swarm, they are referred to as nodes.
+    Swarm managers can use several strategies to run containers, such as “emptiest node” -- which fills the least utilized machines with containers. 
+    Or “global”, which ensures that each machine gets exactly one instance of the specified container. 
+    You instruct the swarm manager to use these strategies in the Compose file.
+    Swarm managers are the only machines in a swarm that can execute your commands, or authorize other machines to join the swarm as workers.
+
+What is stack?
+
+    A stack is a group of interrelated services that share dependencies, and can be orchestrated and scaled together. 
+    A single stack is capable of defining and coordinating the functionality of an entire application (though very complex applications may want to use multiple stacks).
+
+Reference Links:
+
+    https://www.youtube.com/watch?v=wi-MGFhrad0&index=1&list=PLhW3qG5bs-L99pQsZ74f-LC-tOEsBp2rK
+    https://docs.docker.com/get-started/part3/#docker-composeyml
+    https://docs.docker.com/get-started/part4/#understanding-swarm-clusters
